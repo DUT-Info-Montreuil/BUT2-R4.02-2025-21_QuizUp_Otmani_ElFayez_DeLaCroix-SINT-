@@ -5,8 +5,8 @@ import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.entities.dto.Ques
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.services.interfaces.IJoueurServices;
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.services.interfaces.IQuestionnaireServices;
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.enums.Langues;
-import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.determinerElementsDispoPourPartieExceptions.AucunQuestionnaireDisponibleException;
-import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.determinerElementsDispoPourPartieExceptions.JoueurInexistantException;
+import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.detElemDispPouPartExceptions.AucunQuestionnaireDispoException;
+import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.detElemDispPouPartExceptions.JoueurInexistantException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +22,7 @@ public class PartieServiceImpl {
     }
 
     public List<QuestionnaireDTO> determinerElementsDispoPourPartie(String pseudoJoueur)
-            throws JoueurInexistantException, AucunQuestionnaireDisponibleException {
+            throws JoueurInexistantException, AucunQuestionnaireDispoException {
 
         JoueurDTO joueur = joueurService.recupererJoueurParPseudo(pseudoJoueur);
         if (joueur == null) {
@@ -39,7 +39,7 @@ public class PartieServiceImpl {
                 .collect(Collectors.toList());
 
         if (questionnairesFiltres.isEmpty()) {
-            throw new AucunQuestionnaireDisponibleException("Aucun questionnaire disponible pour ce joueur.");
+            throw new AucunQuestionnaireDispoException("Aucun questionnaire disponible pour ce joueur.");
         }
 
         return questionnairesFiltres;

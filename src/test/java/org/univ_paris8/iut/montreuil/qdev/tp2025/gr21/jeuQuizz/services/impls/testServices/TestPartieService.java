@@ -6,8 +6,8 @@ import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.services.impls.Pa
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.entities.dto.QuestionnaireDTO;
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.services.impls.mocks.ServicesMock;
 import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.services.interfaces.IQuestionnaireServices;
-import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.determinerElementsDispoPourPartieExceptions.AucunQuestionnaireDisponibleException;
-import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.determinerElementsDispoPourPartieExceptions.JoueurInexistantException;
+import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.detElemDispPouPartExceptions.AucunQuestionnaireDispoException;
+import org.univ_paris8.iut.montreuil.qdev.tp2025.gr21.jeuQuizz.utils.exceptions.detElemDispPouPartExceptions.JoueurInexistantException;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class TestPartieService {
                 ServicesMock.getMockJoueurService()
         );
 
-        assertThrows(AucunQuestionnaireDisponibleException.class, () ->
+        assertThrows(AucunQuestionnaireDispoException.class, () ->
                 serviceSansQuestionnaires.determinerElementsDispoPourPartie("yasminou"));
     }
 }
